@@ -46,7 +46,7 @@ would produce
 #include <string>
 #include <map>
 #include <set>
-
+#include <cstdlib>
 using namespace std;
 
 typedef map<unsigned int, string> node_array_type;

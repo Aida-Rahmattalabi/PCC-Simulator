@@ -47,6 +47,7 @@ would produce
 #include <string>
 #include <map>
 #include <set>
+#include <cstdlib>
 
 using namespace std;
 

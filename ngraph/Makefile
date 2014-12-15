@@ -18,10 +18,9 @@ EXECS = gprune g2degree gcomponents gcluster_coeff mtx2g v2t \
         gcoarsen g2alignment gsize vmap vimap g2giant_v \
         process_amazon
 
-OUTPUT_DIR = $(HOME)/bin
+OUTPUT_DIR = $(shell pwd)/bin/
 
-all: $(EXECS) 
-
+all:$(EXECS)
 
 
 
