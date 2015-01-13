@@ -12,10 +12,10 @@ PCCSimulator::PCCSimulator() {
 	string homedir = getenv("HOME");
 	string process_file = homedir + "/PCC-Simulator/PCC-Project/src/process.csv";
 	string graph_file = homedir + "/PCC-Simulator/PCC-Project/src/graph.csv";
-	cout << "Looking for files:" << endl;
-	cout << process_file << endl;
-	cout << graph_file << endl;
-	//graph->create_graph(process_file, graph_file);
+	//cout << "Looking for files:" << endl;
+	//cout << process_file << endl;
+	//cout << graph_file << endl;
+	graph->create_graph(process_file, graph_file);
 	//graph->set_discretization(m_discretization);
 }
 

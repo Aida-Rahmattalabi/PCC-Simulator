@@ -147,7 +147,7 @@ void PCCGraph::output_dot()
 	for (Graph::const_iterator p = G.begin(); p != G.end(); p++)
 	{
 		Process* cur_process = m_vec_to_process.find(Graph::node(p))->second;
-		cout << Graph::node(p) << "[label=\"" << cur_process->m_name <<"\"]; \n";
+		cout << Graph::node(p) << " [label=\"" << cur_process->m_name <<"\"]; \n";
 	}
 	for (Graph::const_iterator p = G.begin(); p != G.end(); p++)
 	{
@@ -164,7 +164,7 @@ void PCCGraph::output_dot()
 	  for (Graph::vertex_set::const_iterator q = out.begin();
 				  q != out.end(); q++)
 	  {
-		   cout << from << "->" << *q << " ;\n";
+		   cout << from << "->" << *q << ";\n";
 	  }
 	}
 	cout << "}";
