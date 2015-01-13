@@ -1,0 +1,31 @@
+#Section One
+1 ManualLoad1 10
+2 Robot6 10
+3 Conveyor13 10
+#Section Two
+4 ManualLoad2 10
+5 Robot7 10
+6 Conveyor15 10 
+#Section Three
+7 ManualLoad3 10
+8 Robot1 10
+#Section Three-1
+9 Conveyor1 10
+10 Robot2 10
+#Section Three-1-1
+11 Conveyor3B 10
+12 Robot3B 10
+13 Conveor5B 10
+#Section Three-1-2
+14 Conveyor3C 10
+15 Robot3C 10
+16 Conveyor5C 10
+#Section Three-2
+17 Conveyor3A 10
+18 Robot4A 10
+19 Conveyor5A 10
+#Section Four
+20 Auto2Input 10
+21 Robot5 10
+22 Conveyor9 10
+23 GrindingRoom 10
