@@ -24,6 +24,7 @@ PCCSimulator::PCCSimulator() {
 
 void PCCSimulator::run_simulation(unsigned int timesteps, unsigned int object_generation_rate)
 {
+	m_object_generation_rate = object_generation_rate;
 	for(unsigned int i = 0; i < timesteps; i++)
 	{
 		step();
@@ -37,7 +38,7 @@ void PCCSimulator::set_discretization(double discretization)
 
 void PCCSimulator::step()
 {
-	if(cur_step % object_generation_rate == 0)
+	if(cur_step % m_object_generation_rate == 0)
 	{
 		cur_step = 0;
 		graph->add_objects_to_inputs();

@@ -21,7 +21,7 @@ public:
 	virtual ~PCCSimulator();
 	PCCGraph* graph;
 	int cur_step;
-	unsigned int object_generation_rate;
+	unsigned int m_object_generation_rate;
 private:
 	void step();
 	void process_step(unsigned int cur_idx);
