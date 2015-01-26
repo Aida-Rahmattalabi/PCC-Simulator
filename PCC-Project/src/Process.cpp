@@ -9,7 +9,7 @@
 
 Process::Process() {
 	status = WAITING;
-
+	m_cur_object = -1;
 
 }
 event Process::get_status()

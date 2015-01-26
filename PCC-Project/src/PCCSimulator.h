@@ -21,13 +21,13 @@ public:
 	virtual ~PCCSimulator();
 	PCCGraph* graph;
 	int cur_step;
-	unsigned int m_object_generation_rate;
-	bool m_debug;
 private:
 	void step();
 	void process_step(unsigned int cur_idx);
 	void finalize_step(unsigned int cur_idx);
-	double m_discretization;
+	void debug_output();
+	bool m_debug;
+	unsigned int m_object_generation_rate;
 };
 
 #endif /* PCCSIMULATOR_H_ */

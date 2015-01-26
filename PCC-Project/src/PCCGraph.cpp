@@ -155,7 +155,7 @@ void PCCGraph::move_obj_to_next(unsigned int idx)
 		to_process->m_objects_waiting.push_back(object);
 	}
 	from_process->status = WAITING;
-	from_process->m_cur_object = 0;
+	from_process->m_cur_object = -1;
 }
 void PCCGraph::output_dot()
 {
@@ -187,6 +187,37 @@ void PCCGraph::output_dot()
 	}
 	cout << "}";
 }
+
+string PCCGraph::get_name(unsigned int idx)
+{
+	map<unsigned int, Process*>::iterator it = m_vec_to_process.find(idx);
+	if(it == m_vec_to_process.end())
+	{
+		throw;
+	}
+	return it->second->m_name;
+}
+
+unsigned int PCCGraph::get_object(unsigned int idx)
+{
+	map<unsigned int, Process*>::iterator it = m_vec_to_process.find(idx);
+	if(it == m_vec_to_process.end())
+	{
+		throw;
+	}
+	return it->second->m_cur_object;
+}
+
+vector<unsigned int> PCCGraph::get_objects_waiting(unsigned int idx)
+{
+	map<unsigned int, Process*>::iterator it = m_vec_to_process.find(idx);
+	if(it == m_vec_to_process.end())
+	{
+		throw;
+	}
+	return it->second->m_objects_waiting;
+}
+
 PCCGraph::~PCCGraph() {
 	// TODO Auto-generated destructor stub
 }

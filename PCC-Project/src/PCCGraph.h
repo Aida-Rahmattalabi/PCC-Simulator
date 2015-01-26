@@ -29,6 +29,9 @@ public:
 	void execute_process(unsigned int idx);
 	void set_discretization(double discretization);
 	void add_objects_to_inputs();
+	string get_name(unsigned int idx);
+	unsigned int get_object(unsigned int idx);
+	vector<unsigned int> get_objects_waiting(unsigned int idx);
 
 	tGraph<unsigned int> G;
 	vector<unsigned int> input_edges;
