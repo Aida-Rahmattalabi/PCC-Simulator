@@ -33,6 +33,6 @@ int main(int argc, const char* argv[]) {
 	}
 
 
-	s->run_simulation(20, 100);
+	s->run_simulation(200, 10, 0.1);
 	return 0;
 }

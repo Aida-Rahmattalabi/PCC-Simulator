@@ -32,6 +32,7 @@ public:
 	string get_name(unsigned int idx);
 	unsigned int get_object(unsigned int idx);
 	vector<unsigned int> get_objects_waiting(unsigned int idx);
+	unsigned int get_object_time_left(unsigned int idx);
 
 	tGraph<unsigned int> G;
 	vector<unsigned int> input_edges;

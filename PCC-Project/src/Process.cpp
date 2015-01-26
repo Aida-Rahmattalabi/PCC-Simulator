@@ -19,6 +19,15 @@ event Process::get_status()
 
 void Process::execute(double discretization)
 {
+	if(status == WAITING && m_objects_waiting.size() != 0)
+	{
+		status = WORKING;
+		m_cur_object = m_objects_waiting[0];
+		m_objects_waiting.erase(m_objects_waiting.begin());
+		return;
+	}
+	else if(status == WAITING) return;
+
 	m_time_taken += discretization;
 	if(m_time_taken > m_time_cost)
 	{

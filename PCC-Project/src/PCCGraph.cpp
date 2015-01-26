@@ -117,7 +117,7 @@ void PCCGraph::add_objects_to_inputs()
 		Process* cur_process = m_vec_to_process.find(*it)->second;
 		if(cur_process->get_status() == WAITING)
 		{
-			cur_process->m_cur_object = object;
+			cur_process->m_cur_object = object++;
 			cur_process->status = WORKING;
 		}
 		else
@@ -144,7 +144,6 @@ void PCCGraph::move_obj_to_next(unsigned int idx)
 	{
 		move_obj_to_next(*first);
 	}
-
 	if(to_process->get_status() == WAITING)
 	{
 		to_process->m_cur_object = object;
@@ -156,6 +155,7 @@ void PCCGraph::move_obj_to_next(unsigned int idx)
 	}
 	from_process->status = WAITING;
 	from_process->m_cur_object = -1;
+	from_process->m_time_taken = 0;
 }
 void PCCGraph::output_dot()
 {
@@ -218,6 +218,17 @@ vector<unsigned int> PCCGraph::get_objects_waiting(unsigned int idx)
 	return it->second->m_objects_waiting;
 }
 
+unsigned int PCCGraph::get_object_time_left(unsigned int idx)
+{
+	map<unsigned int, Process*>::iterator it = m_vec_to_process.find(idx);
+	if(it == m_vec_to_process.end())
+	{
+		throw;
+	}
+	if(it->second->get_status() == WAITING) return 0;
+
+	return it->second->m_time_cost - it->second->m_time_taken;
+}
 PCCGraph::~PCCGraph() {
 	// TODO Auto-generated destructor stub
 }

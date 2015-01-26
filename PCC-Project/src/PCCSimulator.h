@@ -9,6 +9,7 @@
 #define PCCSIMULATOR_H_
 
 #include <string.h>
+#include <math.h>
 #include "PCCGraph.h"
 
 
@@ -16,7 +17,7 @@
 class PCCSimulator {
 public:
 	PCCSimulator(bool debug);
-	void run_simulation(unsigned int timesteps, unsigned int object_generation_rate);
+	void run_simulation(unsigned int timesteps, unsigned int object_generation_rate, double discretization);
 	void set_discretization(double discretization);
 	virtual ~PCCSimulator();
 	PCCGraph* graph;

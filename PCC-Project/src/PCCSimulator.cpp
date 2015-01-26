@@ -25,8 +25,9 @@ PCCSimulator::PCCSimulator(bool debug): m_debug(debug) {
 }
 
 
-void PCCSimulator::run_simulation(unsigned int timesteps, unsigned int object_generation_rate)
+void PCCSimulator::run_simulation(unsigned int timesteps, unsigned int object_generation_rate, double discretization)
 {
+	graph->set_discretization(discretization);
 	m_object_generation_rate = object_generation_rate;
 	for(unsigned int i = 0; i < timesteps; i++)
 	{
@@ -43,9 +44,8 @@ void PCCSimulator::step()
 {
 	if(m_debug) debug_output();
 
-	if(cur_step % m_object_generation_rate == 0)
+	if(fmod(cur_step * graph->m_discretization, m_object_generation_rate) == 0)
 	{
-		cur_step = 0;
 		graph->add_objects_to_inputs();
 		cur_step++;
 		return;
@@ -67,7 +67,6 @@ void PCCSimulator::step()
 void PCCSimulator::process_step(unsigned int cur_idx)
 {
 	event cur_proccess_status = graph->get_process_status(cur_idx);
-	if(cur_proccess_status == WAITING) return;
 	if(cur_proccess_status == DONE) throw;
 	graph->execute_process(cur_idx);
 }
@@ -93,10 +92,14 @@ void PCCSimulator::debug_output()
 		string hr_status;
 		if(cur_proccess_status == WAITING) hr_status = "WAITING";
 		if(cur_proccess_status == DONE) hr_status = "DONE";
+		if(cur_proccess_status == WORKING) hr_status = "WORKING";
 		cout << hr_status << " ";
 
 		int cur_object = graph->get_object(cur_vertex);
-		cout << cur_object << endl;
+		cout << cur_object << " ";
+
+		unsigned int process_time_left = graph->get_object_time_left(cur_vertex);
+		cout << process_time_left << endl;
 
 		if(cur_proccess_status == WAITING && cur_object != -1) throw;
 
