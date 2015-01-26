@@ -15,13 +15,14 @@
 
 class PCCSimulator {
 public:
-	PCCSimulator();
+	PCCSimulator(bool debug);
 	void run_simulation(unsigned int timesteps, unsigned int object_generation_rate);
 	void set_discretization(double discretization);
 	virtual ~PCCSimulator();
 	PCCGraph* graph;
 	int cur_step;
 	unsigned int m_object_generation_rate;
+	bool m_debug;
 private:
 	void step();
 	void process_step(unsigned int cur_idx);

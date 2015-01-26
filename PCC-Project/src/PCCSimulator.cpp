@@ -7,7 +7,7 @@
 
 #include "PCCSimulator.h"
 
-PCCSimulator::PCCSimulator() {
+PCCSimulator::PCCSimulator(bool debug): m_debug(debug) {
 	graph = new PCCGraph();
 	string homedir = getenv("HOME");
 	string process_file = homedir + "/PCC-Simulator/PCC-Project/src/process.csv";

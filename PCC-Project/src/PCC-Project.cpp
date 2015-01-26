@@ -6,6 +6,8 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
+#define DEBUG true
+
 #include <iostream>
 #include "ngraph.hpp"
 #include "Process.h"
@@ -18,7 +20,7 @@ using namespace NGraph;
 
 int main(int argc, const char* argv[]) {
 	//cout << argv[1] << endl; // prints !!!Hello World!!!
-	PCCSimulator* s = new PCCSimulator();
+	PCCSimulator* s = new PCCSimulator(DEBUG);
 
 	if(argc > 1)
 	{
