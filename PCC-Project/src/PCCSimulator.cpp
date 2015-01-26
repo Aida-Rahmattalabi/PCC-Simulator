@@ -17,11 +17,33 @@ PCCSimulator::PCCSimulator() {
 	//cout << graph_file << endl;
 	graph->create_graph(process_file, graph_file);
 	//graph->set_discretization(m_discretization);
+
+	cur_step = 0;
 }
 
 
+void PCCSimulator::run_simulation(unsigned int timesteps, unsigned int object_generation_rate)
+{
+	for(unsigned int i = 0; i < timesteps; i++)
+	{
+		step();
+	}
+}
+
+void PCCSimulator::set_discretization(double discretization)
+{
+	graph->set_discretization(discretization);
+}
+
 void PCCSimulator::step()
 {
+	if(cur_step % object_generation_rate == 0)
+	{
+		cur_step = 0;
+		graph->add_objects_to_inputs();
+		cur_step++;
+		return;
+	}
 	for (Graph::const_iterator p = graph->G.begin(); p != graph->G.end(); p++)
 	{
 		Graph::vertex cur_vertex = Graph::node(p);
@@ -32,6 +54,7 @@ void PCCSimulator::step()
 		Graph::vertex cur_vertex = Graph::node(p);
 		finalize_step(cur_vertex);
 	}
+	cur_step++;
 }
 
 void PCCSimulator::process_step(unsigned int cur_idx)

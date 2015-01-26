@@ -109,12 +109,30 @@ void PCCGraph::set_discretization(double discretization)
 	m_discretization = discretization;
 }
 
-void PCCGraph::move_obj_to_next(unsigned int cur_idx)
+void PCCGraph::add_objects_to_inputs()
 {
-	Process* from_process = m_vec_to_process.find(cur_idx)->second;
+	static int object = 0;
+	for(vector<unsigned int>::iterator it = input_edges.begin(); it != input_edges.end(); it++)
+	{
+		Process* cur_process = m_vec_to_process.find(*it)->second;
+		if(cur_process->get_status() == WAITING)
+		{
+			cur_process->m_cur_object = object;
+			cur_process->status = WORKING;
+		}
+		else
+		{
+			cur_process->m_objects_waiting.push_back(object++);
+		}
+	}
+}
+
+void PCCGraph::move_obj_to_next(unsigned int idx)
+{
+	Process* from_process = m_vec_to_process.find(idx)->second;
 	unsigned int object = from_process->m_cur_object;
 
-	Graph::const_iterator p = G.find(cur_idx);
+	Graph::const_iterator p = G.find(idx);
 	const Graph::vertex_set &out = Graph::out_neighbors(p);
 
 	//TODO: Logic for choosing which out neighbors to send things to. Currently doing the first output.

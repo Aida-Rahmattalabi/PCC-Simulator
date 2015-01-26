@@ -22,13 +22,13 @@ public:
 	void insert_edge(Process* p1, Process* p2);
 	void create_graph(string process_file, string graph_file);
 	void output_dot();
-	void move_obj_to_next(unsigned int cur_idx);
+	void move_obj_to_next(unsigned int idx);
 	Process* get_process(unsigned int idx);
 	void set_inputs();
 	event get_process_status(unsigned int idx);
 	void execute_process(unsigned int idx);
 	void set_discretization(double discretization);
-
+	void add_objects_to_inputs();
 
 	tGraph<unsigned int> G;
 	vector<unsigned int> input_edges;

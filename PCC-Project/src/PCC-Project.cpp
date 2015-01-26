@@ -31,6 +31,6 @@ int main(int argc, const char* argv[]) {
 	}
 
 
-	s->step();
+	s->run_simulation(20, 100);
 	return 0;
 }
