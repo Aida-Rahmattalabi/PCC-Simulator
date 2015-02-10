@@ -30,9 +30,10 @@ int main(int argc, const char* argv[]) {
 		{
 			s->graph->output_dot();
 		}
+		return 1;
 	}
 
 
-	s->run_simulation(200, 10, 0.1);
+	s->run_simulation(2000, 10, 0.1);
 	return 0;
 }
